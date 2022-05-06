@@ -11,6 +11,11 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(methodOverride('_method'));
 
+let port = process.env.PORT; 
+if (port == null || port == "") {
+  port = 5000;
+}
+
 
 
 mongoose.connect("mongodb+srv://shreyas:665544@cluster0.i13kr.mongodb.net/blogDB?retryWrites=true&w=majority");
@@ -77,7 +82,7 @@ app.patch("/blogs/:id",async(req,res)=>{
     res.render("new_blog.ejs",{blog:blog});
 })
 
-app.listen(5000 || process.env.PORT,()=>{
+app.listen(port,()=>{
     console.log("Server started at localhost 5000");
 })
 
