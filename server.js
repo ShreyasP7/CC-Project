@@ -77,7 +77,7 @@ app.patch("/blogs/:id",async(req,res)=>{
     res.render("new_blog.ejs",{blog:blog});
 })
 
-app.listen(5000,()=>{
+app.listen(5000 || process.env.PORT,()=>{
     console.log("Server started at localhost 5000");
 })
 
